@@ -4,6 +4,88 @@
 </head>
 <body>
 indixのテストページ
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<br>
+購入したい商品名をご入力ください(部分一致)<br>
+<input id="keyword">
+<br>
+
+購入したい商品名をご入力ください(前方一致)<br>
+<input id="keyword2">
 </body>
+
+<script>
+$(function() {
+var words = [
+      "とまと",
+      "なす",
+      "きゅうり",
+      "ぴーまん",
+      "はくさい",
+      "ぱいなっぷる",
+      "ぱくちー",
+      "なっとう",
+      "なまたまご",
+      "ぱいなっぷる",
+/*      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme",*/
+    ];
+    $( "#keyword" ).autocomplete({
+      source: words,
+    });
+});
+
+
+$(function() {
+var words = [
+      "とまと",
+      "なす",
+      "きゅうり",
+      "ぴーまん",
+      "はくさい",
+      "ぱいなっぷる",
+      "ぱくちー",
+      "なっとう",
+      "なまたまご",
+      "ぱいなっぷる",
+    ];
+    $( "#keyword2" ).autocomplete({
+      source: function(request, response) {
+        var list = [];
+        list = words.filter(function (word) {
+          return word.indexOf(request.term) === 0 || word.toLowerCase().indexOf(request.term) === 0;
+        });
+        response(list);
+      },
+    });
+});
+
+
+
+Resources
+</script>
 </html>
 
